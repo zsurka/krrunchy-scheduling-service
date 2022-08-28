@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>scheduling.service</name>
-	<description>Krrunchy Scheduling Service</description>
+	<description>Scheduling microservice for Krrunchy</description>
 	<properties>
 		<java.version>15</java.version>
 	</properties>

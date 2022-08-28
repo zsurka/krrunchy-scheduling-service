@@ -27,7 +27,6 @@ import com.krrunchy.scheduling.service.repository.ScheduleRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Controller
-@RequestMapping("/schedules")
 @CrossOrigin
 @Tag(name = "schedules", description = "The Scheduling API")
 public class ScheduleController {
@@ -40,15 +39,14 @@ public class ScheduleController {
 		this.repo = repo;
 	}
 	
-	@GetMapping(value="/",produces = "application/json")
+	@GetMapping(value="/v1/schedules",produces = "application/json")
 	@ResponseBody
-	
 	public List<Schedule> findAllMenus(){
 		List<Schedule> findAll = repo.findAll();
 		return findAll;	
 	}
 
-	@GetMapping(value="/{date}",produces = "application/json")
+	@GetMapping(value="/v1/schedules/{date}",produces = "application/json")
 	@ResponseBody
 	private List<Schedule> getMenusFor(@PathVariable  String date) {
 		Optional<Date> dateObj = DateUtil.parseDate(date);
@@ -63,14 +61,14 @@ public class ScheduleController {
 		return list;
 	}
 
-	@PostMapping(value="/",produces = "application/json")
+	@PostMapping(value="/v1/schedules",produces = "application/json")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public void addSchedule(){
 	}
 	
 
-	@DeleteMapping(value="/{date}",produces = "application/json")
+	@DeleteMapping(value="/v1/schedules/{date}",produces = "application/json")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public Schedule deleteScheduleByDate(@PathVariable String date){
